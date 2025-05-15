@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anniversary Simple</title>
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #f7f1e1;
+    font-family: 'Times New Roman', serif;
+    color: #5a4a3e;
+  }
+  p.special-text {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    color: #5a4a3e;
+  }
+  .container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    height: 100vh;
+    width: 100%;
+    scroll-behavior: smooth;
+  }
+  .container::-webkit-scrollbar {
+    display: none;
+  }
+  .container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  section {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    background: linear-gradient(to bottom right, #f7f1e1, #fff9f0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  h1 {
+    margin-bottom: 8px;
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+  }
+  img.slide-photo {
+    max-width: 50%;
+    max-height: 40vh;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(90, 74, 62, 0.3);
+    margin-bottom: 20px;
+  }
+  button.buka-button, button.prev-button {
+    background-color: #c9b497;
+    border: none;
+    color: #3f2e1e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+    user-select: none;
+    margin: 0 5px;
+  }
+  button.buka-button:hover, button.prev-button:hover {
+    background-color: #b79c75;
+  }
+  .buttons {
+    display: flex;
+    gap: 12px;
+  }
+  .love {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: #d8a49f;
+    transform: rotate(45deg);
+    animation: float 7s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    pointer-events: none;
+    border-radius: 3px 3px 0 0;
+  }
+  .love::before,
+  .love::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #d8a49f;
+    border-radius: 50%;
+  }
+  .love::before {
+    top: -6px;
+    left: 0;
+  }
+  .love::after {
+    left: -6px;
+    top: 0;
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(45deg);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-10vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Audio -->
+<audio id="bg-music" autoplay loop>
+  <audio id="bg-music" src="tiktok.mp3" autoplay loop></audio>
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<!-- Efek love kecil terbang -->
+<div class="love" style="left:8%; animation-delay: 0s;"></div>
+<div class="love" style="left:25%; animation-delay: 1.8s;"></div>
+<div class="love" style="left:45%; animation-delay: 3.6s;"></div>
+<div class="love" style="left:65%; animation-delay: 5.4s;"></div>
+<div class="love" style="left:85%; animation-delay: 7.2s;"></div>
+
+<div class="container">
+  <audio id="bg-music" src="tiktok.mp3" autoplay loop></audio>
+  <section>
+    <h1>Happy Anniversary, Dear</h1>
+    <p class="special-text">Every day that passes with you feels like a gift I never expected but now can’t live without. It’s crazy how in just a month, you’ve become such a big part of my world — someone I think about when I wake up, and someone I want to share my dreams with when I fall asleep.</p>
+    <img class="slide-photo" src="foto1.jpeg" alt="Foto 1" />
+    <div class="buttons">
+      <button class="prev-button" onclick="goPrev(this)">Previously</button>
+      <button class="buka-button" onclick="goNext(this)">Happy Anniversary</button>
+    </div>
+  </section>
+
+  <section>
+    <h1>In Every Heartbeat, There’s You</h1>
+    <p class="special-text">This one year anniversary isn’t just a number to me — it’s a symbol of how far we’ve come and how much I’m willing to keep going. I’m grateful for every smile, every late night chat, every silly joke, and even the moments when we just sit quietly and feel connected without saying a word.</p>
+    <img class="slide-photo" src="foto2.jpeg" alt="Foto 2" />
+    <div class="buttons">
+      <button class="prev-button" onclick="goPrev(this)">Previously</button>
+      <button class="buka-button" onclick="goNext(this)">Next, babe</button>
+    </div>
+  </section>
+
+  <section>
+    <h1>One Month Closer to Forever</h1>
+    <p class="special-text">I don’t know what the future holds, but I do know that with you, I’m ready to face anything. Thanks for being patient, kind, and real — and for making me believe that love like this is possible. Here’s to us, to this beautiful beginning, and to the many months and years we’ll create together.</p>
+    <img class="slide-photo" src="foto3.jpeg" alt="Foto 3" />
+    <div class="buttons">
+      <button class="prev-button" onclick="goPrev(this)">Previously</button>
+      <button class="buka-button" onclick="goNext(this)">Open this Sweetheart</button>
+    </div>
+  </section>
+
+  <section>
+    <h1>Happy anniversary, babe</h1>
+    <p class="special-text">Let’s keep making memories that make our hearts fuller than yesterday.</p>
+        <div class="buttons">
+      <button class="prev-button" onclick="goPrev(this)">Previously</button>
+      <button class="buka-button" onclick="goNext(this)">I love you, darl</button>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Navigasi tombol next-prev (kode kamu sudah benar)
+  function goNext(btn) {
+    const currentSection = btn.closest('section');
+    const container = document.querySelector('.container');
+    const sections = [...container.querySelectorAll('section')];
+    const currentIndex = sections.indexOf(currentSection);
+    const nextIndex = (currentIndex + 1) % sections.length;
+    sections[nextIndex].scrollIntoView({behavior: 'smooth'});
+  }
+
+  function goPrev(btn) {
+    const currentSection = btn.closest('section');
+    const container = document.querySelector('.container');
+    const sections = [...container.querySelectorAll('section')];
+    const currentIndex = sections.indexOf(currentSection);
+    const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
+    sections[prevIndex].scrollIntoView({behavior: 'smooth'});
+  } 
+
+  // Trik agar play otomatis setelah klik pertama
+  window.addEventListener('click', function () {
+    const audio = document.getElementById('bg-music');
+    if (audio.paused) {
+        audio.play().catch((e) => {
+            console.log('Autoplay ditolak browser, user harus interaksi dulu');
+        });
+    }
+  }, { once: true });
+</script>
+
+</body>
+</html>
